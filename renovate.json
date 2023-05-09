@@ -1,0 +1,37 @@
+{
+  "extends": [
+    "github>whitesource/merge-confidence:beta",
+    ":semanticCommits",
+    ":separateMajorReleases",
+    ":combinePatchMinorReleases",
+    ":ignoreUnstable",
+    ":prNotPending",
+    ":prHourlyLimitNone",
+    ":prConcurrentLimit10",
+    ":updateNotScheduled",
+    ":maintainLockFilesDisabled",
+    ":autodetectPinVersions",
+    "group:monorepos",
+    "group:recommended"
+  ],
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeStrategy": "rebase",
+      "platformAutomerge": true,
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"]
+    },
+    {
+      "matchPackageNames": ["dotnet-sdk"],
+      "allowedVersions": "<7.0"
+    },
+    {
+      "packagePatterns": ["^Amazon"],
+      "groupName": "Amazon packages"
+    }
+  ],
+  "stabilityDays": 7,
+  "rebaseWhen": "behind-base-branch"
+}

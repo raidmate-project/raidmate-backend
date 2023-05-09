@@ -1,0 +1,19 @@
+{
+  "author": {
+    "name": "Raidmate Backend",
+    "url": "https://github.com/raidmate-project/raidmate-backend"
+  },
+  "cacheDirectories": [
+    "node_modules"
+  ],
+  "devDependencies": {
+    "prettier": "2.8.8"
+  },
+  "license": "",
+  "name": "raidmate-backend",
+  "private": true,
+  "repository": "https://github.com/raidmate-project/raidmate-backend",
+  "scripts": {
+    "prettier": "prettier -w \"**/*.{yml,yaml}\""
+  }
+}
