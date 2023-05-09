@@ -1,0 +1,58 @@
+bin
+obj
+*.diff
+*.suo
+*.sln.cache
+.vs
+.idea
+*resharper*
+*ReSharper*
+*.dll
+*.cab
+*.eap
+*.bin
+*.msi
+*.pdb
+*.exe
+*.ax
+*.chm
+*.log
+Thumbs.db
+_errorlog.txt
+*.TMP
+*.ncb
+*.ilk
+*.vs10x
+*.user
+*switchReferences*
+*.orig
+TestResult.xml
+StyleCop.Cache
+Output
+/packages
+TestResult*.xml
+*.nugetreferenceswitcher
+/NuGetReferenceSwitcher.config
+
+
+# System Test related
+# temp files
+*~
+*.swp
+
+# python bin files
+*.pyc
+
+# other
+*.pcap
+.noseids
+.idea/*
+Pipfile.lock
+GPUCache/
+old_GPUCache_001
+cdk.out/
+node_modules/
+output/
+
+# template file that isn't used since we use CDK
+template.yaml
