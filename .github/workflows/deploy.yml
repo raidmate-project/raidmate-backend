@@ -1,0 +1,64 @@
+name: 'Pull Request'
+
+# The workflow should only trigger on pull requests to the main branch
+on:
+  pull_request:
+    branches:
+      - main
+
+# Required to get the ID Token that will be used for OIDC
+permissions:
+  contents: read
+  id-token: write
+  pull-requests: read
+
+jobs:
+  read-dev:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-region: eu-west-1
+          role-to-assume: ${{ secrets.READ_ROLE }}
+          role-session-name: OIDCSession
+
+      - run: aws s3 cp s3://raidmate-dev-deployment-bucket/README.md README.md
+        shell: bash
+
+  write-dev:
+    runs-on: ubuntu-latest
+    needs: read-dev
+    environment: Development
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-region: eu-west-1
+          role-to-assume: ${{ secrets.DEV_DEPLOY_ROLE }}
+          role-session-name: OIDCSession
+
+      - run: aws s3 cp README.md s3://raidmate-dev-deployment-bucket/README.md
+        shell: bash
+
+  read-prod:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-region: eu-west-1
+          role-to-assume: ${{ secrets.READ_ROLE }}
+          role-session-name: OIDCSession
+
+      - run: aws s3 cp s3://raidmate-prod-deployment-bucket/README.md README.md
+        shell: bash
