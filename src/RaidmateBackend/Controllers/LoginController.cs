@@ -1,7 +1,3 @@
-// -------------------------------------------------------------------
-//  Copyright (c) Axis Communications AB, SWEDEN. All rights reserved.
-// -------------------------------------------------------------------
-
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;

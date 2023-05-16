@@ -1,22 +1,11 @@
-// -------------------------------------------------------------------
-//  Copyright (c) Axis Communications AB, SWEDEN. All rights reserved.
-// -------------------------------------------------------------------
-
 using System.Text.Json.Serialization;
 
 namespace RaidmateBackend.Model;
 
-public class AccessTokenDto
+public record AccessTokenDto(
+	[property: JsonPropertyName("access_token")] string AccessToken,
+	[property: JsonPropertyName("token_type")] string TokenType,
+	[property: JsonPropertyName("expires_in")] int ExpiresIn,
+	[property: JsonPropertyName("scope")] string Scope)
 {
-	[JsonPropertyName("access_token")]
-	public string AccessToken { get; init; }
-
-	[JsonPropertyName("token_type")]
-	public string TokenType { get; init; }
-
-	[JsonPropertyName("expires_in")]
-	public int ExpiresIn { get; set; }
-
-	[JsonPropertyName("scope")]
-	public string Scope { get; set; }
 }
