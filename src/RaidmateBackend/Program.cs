@@ -1,7 +1,3 @@
-// -------------------------------------------------------------------
-//  Copyright (c) Axis Communications AB, SWEDEN. All rights reserved.
-// -------------------------------------------------------------------
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
